@@ -8,7 +8,10 @@ const cockpit = props => {
     // HTTP requests from here = OK
     setTimeout(() => {
       alert('Saved data to cloud.');
-    }, 1000)
+    }, 1000);
+    return () => {
+      console.log('[Cockpit.js] use to do cleanup work on functional component');
+    };
   // }, [props.persons]); // use to limit it to when this data is touched
   }, []); // use for on create only
 
