@@ -19,7 +19,8 @@ class App extends Component {
       { id: 'asdh', name: 'Meyer', age: 24 }
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    changeCounter: 0,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -52,7 +53,12 @@ class App extends Component {
     person.name = event.target.value;
     persons[personIndex] = person;
 
-    this.setState( {persons: persons} );
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1,
+      }
+    });
   }
 
   deletePersonHandler = (personIndex) => {
