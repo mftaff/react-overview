@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
 
 class App extends Component {
   constructor(props) {
@@ -78,16 +78,16 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <React.Fragment>
         <Cockpit
           title={this.props.appTitle}
           showPersons={this.state.showPersons}
           personsLength={this.state.persons.length}
           clicked={this.togglePersonsHandler} />
         {persons}
-      </WithClass>
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
